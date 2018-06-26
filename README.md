@@ -1,4 +1,4 @@
-# Node With React Fullstack Web Development Udemy course
+# Angular 6 - The Complete Guide
 
 > source code for the "Angular 6 (formerly Angular 2) - The Complete Guide" Udemy course
 
