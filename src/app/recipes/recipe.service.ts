@@ -8,7 +8,6 @@ import { Subject } from "rxjs/Subject";
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-
   private recipes: Recipe[] = [
     new Recipe(
       'Tasty Schnitzel',
@@ -28,6 +27,11 @@ export class RecipeService {
       ])
   ];
   constructor(private shoppingListService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     // We use slice to get a copy of the array
