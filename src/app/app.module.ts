@@ -20,7 +20,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: "my-app"}),
     HttpClientModule,
     CoreModule,
     ShoppingListModule,
