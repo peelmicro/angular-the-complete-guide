@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 
-import { RecipesComponent } from "./recipes.component";
-import { RecipeStartComponent } from "./recipe-start/recipe-start.component";
-import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
-import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
+import { RecipesComponent } from './recipes.component';
+import { RecipeStartComponent } from './recipe-start/recipe-start.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { AuthGuard } from '../auth/auth-guard.service';
 
 const recipeRoutes: Routes = [
@@ -14,7 +14,7 @@ const recipeRoutes: Routes = [
     { path: ':id', component: RecipeDetailComponent },
     { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGuard] }
   ]}
-]
+];
 
 @NgModule({
   imports: [
@@ -22,6 +22,6 @@ const recipeRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class RecipeRoutingModule { 
+export class RecipeRoutingModule {
 
 }

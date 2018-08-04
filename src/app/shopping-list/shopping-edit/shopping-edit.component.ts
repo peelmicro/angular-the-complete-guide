@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Ingredient } from '../../shared/ingredient.model';
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import * as fromApp from '../../store/app.reducers'
+import * as fromApp from '../../store/app.reducers';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -15,7 +15,7 @@ import * as fromApp from '../../store/app.reducers'
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') shoppingListForm: NgForm;
   subscription: Subscription;
-  editMode: boolean = false;
+  editMode = false;
   editedItem: Ingredient;
   constructor(
     private store: Store<fromApp.AppState>
@@ -31,7 +31,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
             this.shoppingListForm.setValue({
               name: this.editedItem.name,
               amount: this.editedItem.amount
-            })
+            });
           } else {
             this.editMode = false;
           }
@@ -43,9 +43,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     const value = form.value;
     const ingredient = new Ingredient(value.name, value.amount);
     if (this.editMode) {
-      this.store.dispatch(new ShoppingListActions.UpdateIngredient(ingredient))
+      this.store.dispatch(new ShoppingListActions.UpdateIngredient(ingredient));
     } else {
-      this.store.dispatch(new ShoppingListActions.AddIngredient(ingredient))
+      this.store.dispatch(new ShoppingListActions.AddIngredient(ingredient));
     }
     this.editMode = false;
     form.reset();
@@ -53,16 +53,16 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   OnClear() {
     this.editMode = false;
-    this.shoppingListForm.reset();    
+    this.shoppingListForm.reset();
   }
   OnDelete() {
     if (this.editMode) {
-      this.store.dispatch(new ShoppingListActions.DeleteIngredient())
+      this.store.dispatch(new ShoppingListActions.DeleteIngredient());
       this.OnClear();
     }
   }
   ngOnDestroy() {
-    this.store.dispatch(new ShoppingListActions.StopEdit())
+    this.store.dispatch(new ShoppingListActions.StopEdit());
     this.subscription.unsubscribe();
   }
 

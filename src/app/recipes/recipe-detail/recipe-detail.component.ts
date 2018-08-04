@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 
-import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions'
-import * as fromRecipe from '../store/recipe.reducers'
-import * as RecipeActions from '../store/recipe.actions'
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
+import * as fromRecipe from '../store/recipe.reducers';
+import * as RecipeActions from '../store/recipe.actions';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -27,9 +27,9 @@ export class RecipeDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.recipeState = this.store.select('recipes');        
+        this.recipeState = this.store.select('recipes');
       }
-    )    
+    );
   }
 
   onAddToShoppingList() {
@@ -40,12 +40,12 @@ export class RecipeDetailComponent implements OnInit {
           this.store.dispatch(new ShoppingListActions
             .AddIngredients(recipeState.recipes[this.id].ingredients));
         })
-      )
-    
+      );
+
   }
 
   onEditRecipe() {
-    this.router.navigate(['edit'], {relativeTo: this.route})
+    this.router.navigate(['edit'], {relativeTo: this.route});
   }
   onDeleteRecipe() {
     this.store.dispatch(new RecipeActions.DeleteRecipe(this.id));

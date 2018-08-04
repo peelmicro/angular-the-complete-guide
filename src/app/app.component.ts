@@ -10,12 +10,12 @@ export class AppComponent implements OnInit {
   loadedfeature = 'recipe';
 
   ngOnInit(): void {
-    var config = {
-      apiKey: "AIzaSyDSp_ITM9LjcxV7xtZcoF2qSmbfxO0vJHM",
-      authDomain: "ng-recipe-book-cc043.firebaseapp.com"
+    const config = {
+      apiKey: 'AIzaSyDSp_ITM9LjcxV7xtZcoF2qSmbfxO0vJHM',
+      authDomain: 'ng-recipe-book-cc043.firebaseapp.com'
     };
-    firebase.initializeApp(config);    
-  }  
+    firebase.initializeApp(config);
+  }
   onNavigate(feature: string) {
     this.loadedfeature = feature;
   }
